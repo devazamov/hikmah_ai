@@ -6,7 +6,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from aiogram import Bot
-from aiogram.types import ChatMemberStatus
+from aiogram.enums import ChatMemberStatus
 from config.settings import settings
 from utils.logger import logger
 

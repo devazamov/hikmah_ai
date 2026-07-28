@@ -81,7 +81,7 @@ async def handle_ai_message(message: Message, user: User = None, session=None):
 
         if not response.success:
             await message.answer(
-                f"❌ <b>AI xatosi:</b>\n{response.error or 'Noma'lum xatolik'}",
+                f"❌ <b>AI xatosi:</b>\n{response.error or 'Nomaʼlum xatolik'}",
                 parse_mode="HTML",
             )
             return

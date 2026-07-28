@@ -41,11 +41,13 @@ faiss-cpu==1.9.0
 pypdf==5.1.0
 pillow==11.0.0
 qrcode[pil]==8.0
-yt-dlp==2024.11.18      # YouTube/Social media video download
+yt-dlp==2024.11.18     # YouTube/Social media video download
 instaloader==4.13.1
 
 # ── HTTP & Web ────────────────────────────────────
-aiohttp==3.11.7
+# NOTE: aiogram==3.13.1 requires aiohttp<3.11, so we pin to the
+# latest compatible 3.10.x release instead of 3.11.7.
+aiohttp==3.10.11
 beautifulsoup4==4.12.3
 lxml==5.3.0
 requests==2.32.3
