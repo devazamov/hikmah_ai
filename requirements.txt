@@ -1,0 +1,84 @@
+# ═══════════════════════════════════════════════
+# Hikmah AI — requirements.txt
+# Python 3.12+
+# ═══════════════════════════════════════════════
+
+# ── Telegram Bot ────────────────────────────────
+aiogram==3.13.1
+aiogram-dialog==2.2.0
+
+# ── FastAPI (Webhook & Admin API) ────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.17
+httpx==0.27.2
+
+# ── Firebase ─────────────────────────────────────
+firebase-admin==6.6.0
+
+# ── Database ─────────────────────────────────────
+aiosqlite==0.20.0
+sqlalchemy[asyncio]==2.0.36
+alembic==1.14.0
+
+# ── Redis (optional) ─────────────────────────────
+redis[hiredis]==5.2.0
+aioredis==2.0.1
+
+# ── AI Providers ─────────────────────────────────
+google-generativeai==0.8.3
+groq==0.11.0
+openai==1.54.4          # OpenRouter also uses OpenAI client
+
+# ── AI Features ──────────────────────────────────
+openai-whisper==20231117
+gtts==2.5.3             # TTS
+pyttsx3==2.90
+langchain==0.3.7
+langchain-community==0.3.7
+langchain-google-genai==2.0.5
+faiss-cpu==1.9.0
+pypdf==5.1.0
+pillow==11.0.0
+qrcode[pil]==8.0
+yt-dlp==2024.11.18     # YouTube/Social media video download
+instaloader==4.13.1
+
+# ── HTTP & Web ────────────────────────────────────
+aiohttp==3.11.7
+beautifulsoup4==4.12.3
+lxml==5.3.0
+requests==2.32.3
+
+# ── Utils ─────────────────────────────────────────
+python-dotenv==1.0.1
+pydantic==2.10.1
+pydantic-settings==2.6.1
+loguru==0.7.2
+apscheduler==3.10.4
+pytz==2024.2
+babel==2.16.0
+humanize==4.11.0
+
+# ── File Processing ────────────────────────────────
+python-docx==1.1.2
+openpyxl==3.1.5
+filetype==1.2.0
+aiofiles==24.1.0
+zipfile36==0.1.3
+
+# ── Security ───────────────────────────────────────
+cryptography==43.0.3
+passlib==1.7.4
+python-jose==3.3.0
+
+# ── Currency & Weather ─────────────────────────────
+# (uses free APIs — no extra lib needed)
+
+# ── Code Quality ───────────────────────────────────
+black==24.10.0
+ruff==0.7.4
+mypy==1.13.0
+pytest==8.3.3
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0

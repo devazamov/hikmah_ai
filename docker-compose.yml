@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  hikmah_ai:
+    build: .
+    container_name: hikmah_ai_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./hikmah_ai.db:/app/hikmah_ai.db
+    depends_on:
+      - redis
+    networks:
+      - hikmah_net
+
+  redis:
+    image: redis:7-alpine
+    container_name: hikmah_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - hikmah_net
+
+networks:
+  hikmah_net:
+    driver: bridge

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pyc
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Secrets
+firebase_credentials.json
+service_account.json
+credentials.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Docker
+.dockerignore
+
+# Media temp
+downloads/
+temp/
+tmp/
