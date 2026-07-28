@@ -41,7 +41,7 @@ faiss-cpu==1.9.0
 pypdf==5.1.0
 pillow==11.0.0
 qrcode[pil]==8.0
-yt-dlp==2024.11.18     # YouTube/Social media video download
+yt-dlp==2024.11.18      # YouTube/Social media video download
 instaloader==4.13.1
 
 # ── HTTP & Web ────────────────────────────────────

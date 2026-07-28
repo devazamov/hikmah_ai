@@ -1,30 +1,37 @@
-version: "3.9"
+FROM python:3.12-slim
 
-services:
-  hikmah_ai:
-    build: .
-    container_name: hikmah_ai_bot
-    restart: unless-stopped
-    env_file:
-      - .env
-    volumes:
-      - ./logs:/app/logs
-      - ./data:/app/data
-      - ./hikmah_ai.db:/app/hikmah_ai.db
-    depends_on:
-      - redis
-    networks:
-      - hikmah_net
+# System dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libffi-dev \
+    libssl-dev \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
-  redis:
-    image: redis:7-alpine
-    container_name: hikmah_redis
-    restart: unless-stopped
-    ports:
-      - "6379:6379"
-    networks:
-      - hikmah_net
+WORKDIR /app
 
-networks:
-  hikmah_net:
-    driver: bridge
+# --- Fix for legacy packages that still `import pkg_resources` at build time ---
+# setuptools>=81 removed pkg_resources, which breaks openai-whisper's old-style
+# setup.py during "Getting requirements to build wheel".
+# 1) Pin setuptools to a version that still ships pkg_resources.
+# 2) Install openai-whisper with --no-build-isolation so pip reuses THIS
+#    setuptools instead of downloading the newest one into an isolated env.
+RUN pip install --no-cache-dir "setuptools<81" wheel
+RUN pip install --no-cache-dir --no-build-isolation openai-whisper==20231117
+
+# Install the rest of the Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy project
+COPY . .
+
+# Create logs directory
+RUN mkdir -p logs data
+
+# Environment
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Run
+CMD ["python", "main.py"]
